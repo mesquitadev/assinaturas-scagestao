@@ -1,0 +1,192 @@
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+    *{
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        display: inline-flex;
+    }
+    input[type=text]{
+        border-radius: 10px;
+        width: 197px;
+        height: 40px;
+        border: none;
+    }
+
+    .container {
+         width: 100vw;
+         height: 100vh;
+         background: #6C7A89;
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         align-items: center
+     }
+
+    .boxes{
+        display: block;
+        height: 350px;
+        width: 212px;
+    }
+
+    .boxes button{
+        color: fff;
+        border-radius: 5px;
+        padding: 10px;
+        border: none;
+        margin-top: 20px;
+    }
+    #gerar{
+        background-color: #B2DFDB;
+    }
+    #gerarCard{
+        background-color: #03A9F4;
+    }
+
+
+    .box-geral{
+        width: 1210px;
+        height: 382px;
+        background-color: #000; 
+
+    }
+    .box1{
+        width: 820px;
+        height: 382px;
+        background-color: #ca0202;
+    }
+    .box2{
+        background-color: #fff;
+        height: 383px;
+        width: 397px;
+    }
+    .box2 img{
+        width: 200px;
+        height: 200px;
+        padding: 91px;
+    }
+    .info{
+        color: white;
+        font-size: 2.5em;
+        font-weight: 300;
+        display: block;
+        position: fixed;
+        width: 530px;
+        padding: 57px;
+    }
+    .info #nome{
+        font-size: .9em;
+    }
+    .info #oab{
+        font-size: .8em;
+    }
+
+    .info #tel{
+        font-size: .9em;
+        font-weight: 400;
+    }
+
+    .info #email{
+        font-size: .9em;
+        font-weight: 200;
+    }
+    .info #site{
+        font-size: .6em;
+        font-weight: 200;
+        margin-top: 62px;
+    }
+    .info p {
+        margin-top: 10px;
+        display: inline-block;
+    }
+    .info #setor{
+        font-size: .9em;
+        font-weight: 200;
+    }
+</style>
+<title>Gerador de Assinaturas - SCA Gestão</title>
+</head>
+<body>
+    <div class="container">
+        <div class="boxes">
+            <label for="">Nome</label>
+            <input type="text" id="nome">
+
+            <label for="">Setor</label>
+            <input type="text" id="setor">
+
+            <label for="">Telefone</label>
+            <input type="text" id="tel">
+
+            <label for="">OAB:</label>
+            <input type="text" id="oab">
+
+            <label for="">Email</label>
+            <input type="text" id="email">
+
+            <button id="gerar">Gerar Assinatura</button>
+            <button id="gerarCard">Salvar Assinatura</button>
+        </div>
+
+        <div class="box-geral" class="box-geral">
+            <div class="box1">
+                <div class="info">
+                    <p id="nome"> </p> <p id="oab"> </p> | <p id="setor"></p><br>
+                    <p id="tel"></p><br>
+                    <p id="email"></p>
+                    <a id="site">www.scagestao.com.br</a>
+                </div>
+            </div>
+            <div class="box2">
+                <img src="logo.png" alt="">
+            </div>
+        </div>
+    </div>
+
+
+<script src="html2canvas.js"></script>
+<script src="canvas2image.js"></script>
+<script src="jquery.mask.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#gerar").click(function(){
+            var nome = $("#nome").val();
+            var tel = $("#tel").val();
+            var setor = $("#setor").val();
+            var oab  = $("#oab").val();
+            var email = $("#email").val();
+
+            console.log(nome);
+            console.log(tel);
+            console.log(email);
+
+            $('p#nome').html(nome);
+            $('p#setor').html(setor);
+            $('p#oab').html(oab);
+            $('p#tel').html(tel); 
+            $('p#email').html(email); 
+        });
+
+        $('#tel').mask("(00) 0000-0000", {placeholder: "(00)00000-0000"});
+
+        $('#gerarCard').on('click', function() {       
+            html2canvas(document.querySelector('.box-geral'), {
+                onrendered: function(canvas) {
+                     // document.body.appendChild(canvas);
+                    return Canvas2Image.saveAsJPEG(canvas);
+
+                },
+            });
+        });
+
+
+});
+
+</script>
+</body>
+</html>
