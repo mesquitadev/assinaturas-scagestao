@@ -71,13 +71,20 @@
         padding: 91px;
     }
     .info{
+        margin-top: 24px;
         color: white;
-        font-size: 2.5em;
+        font-size: 1.9em;
         font-weight: 300;
         display: block;
         position: fixed;
         width: 530px;
         padding: 57px;
+    }
+    .info #nome{
+        font-size: .9em;
+    }
+    .info #oab{
+        font-size: .8em;
     }
 
     .info #tel{
@@ -90,7 +97,7 @@
         font-weight: 200;
     }
     .info #site{
-        font-size: .8em;
+        font-size: .6em;
         font-weight: 200;
         margin-top: 62px;
     }
@@ -117,6 +124,9 @@
             <label for="">Telefone</label>
             <input type="text" id="tel">
 
+            <label for="">OAB:</label>
+            <input type="text" id="oab">
+
             <label for="">Email</label>
             <input type="text" id="email">
 
@@ -127,8 +137,8 @@
         <div class="box-geral" class="box-geral">
             <div class="box1">
                 <div class="info">
-                    <p id="nome"> </p> | <p id="setor"></p>
-                    <p id="tel"></p>
+                    <p id="nome"> </p> <p id="oab"> </p> | <p id="setor"></p><br>
+                    <p id="tel"></p><br>
                     <p id="email"></p>
                     <a id="site">www.scagestao.com.br</a>
                 </div>
@@ -149,6 +159,7 @@
             var nome = $("#nome").val();
             var tel = $("#tel").val();
             var setor = $("#setor").val();
+            var oab  = $("#oab").val();
             var email = $("#email").val();
 
             console.log(nome);
@@ -157,11 +168,12 @@
 
             $('p#nome').html(nome);
             $('p#setor').html(setor);
+            $('p#oab').html(oab);
             $('p#tel').html(tel); 
             $('p#email').html(email); 
         });
 
-        $('#tel').mask("(00) 0000-0000", {placeholder: "(00)00000-0000"});
+        $('#tel').mask("(00) 00000-0000", {placeholder: "(00)00000-0000"});
 
         $('#gerarCard').on('click', function() {       
             html2canvas(document.querySelector('.box-geral'), {

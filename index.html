@@ -71,8 +71,9 @@
         padding: 91px;
     }
     .info{
+        margin-top: -20px;
         color: white;
-        font-size: 2.5em;
+        font-size: 1.9em;
         font-weight: 300;
         display: block;
         position: fixed;
@@ -172,7 +173,7 @@
             $('p#email').html(email); 
         });
 
-        $('#tel').mask("(00) 0000-0000", {placeholder: "(00)00000-0000"});
+        $('#tel').mask("(00) 00000-0000", {placeholder: "(00)00000-0000"});
 
         $('#gerarCard').on('click', function() {       
             html2canvas(document.querySelector('.box-geral'), {
